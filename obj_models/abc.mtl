@@ -1,0 +1,38 @@
+# Blender MTL File: 'Sgabello basso.blend'
+# Material Count: 3
+
+newmtl Material_iron_s03
+Ns 953.572499
+Ka 0.018529 0.018529 0.018529
+Kd 0.053518 0.011816 0.012631
+Ks 0.045455 0.045455 0.045455
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 3
+map_Bump /home/juan-street/Progetti3D/Textures/Metalli/brushedsteel7NormalMap.png
+
+newmtl Material_leaves
+Ns 74.509804
+Ka 1.000000 1.000000 1.000000
+Kd 0.025025 0.041902 0.019740
+Ks 0.037077 0.060865 0.015046
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Bump -bm 0.002000 Edera Bump.png
+map_Kd Edera Hd.png
+map_d Edera Hd.png
+
+newmtl Material_wood_02
+Ns 160.784314
+Ka 1.000000 1.000000 1.000000
+Kd 0.121938 0.076135 0.032879
+Ks 0.002256 0.002256 0.002256
+Ke 0.000000 0.000000 0.000000
+Ni 1.460000
+d 1.000000
+illum 2
+map_Bump -bm 0.066036 AbeteAnticoBump.jpg
+map_Kd AbeteAnticoDiffuse.jpg
