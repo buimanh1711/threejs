@@ -2,6 +2,9 @@ class GLB {
   constructor(link) {
     this.link = link;
 
+    this.rotating = false;
+
+    this.model = null;
     this.scene = null;
     this.camera = null;
     this.render = null;
@@ -14,6 +17,12 @@ class GLB {
   }
 
   init = () => {
+
+    const control = document.getElementById('rotate');
+    control.addEventListener('click', () => {
+      this.rotating = !this.rotating;
+    })
+
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0xdddddd);
 
@@ -32,7 +41,8 @@ class GLB {
     this.loader.load(
       this.link,
       (glb) => {
-        this.scene.add(glb.scene);
+        this.model = glb.scene;
+        this.scene.add(this.model);
         this.animate();
       }
     );
@@ -63,6 +73,9 @@ class GLB {
   }
 
   animate = () => {
+    if(this.rotating) {
+      this.model.rotation.y += 0.01;
+    }
     this.renderer.render(this.scene, this.camera);
     this.controls.update();
     requestAnimationFrame(this.animate);

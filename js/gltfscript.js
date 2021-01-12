@@ -2,6 +2,9 @@ class GLTF {
   constructor(link) {
     this.link = link;
 
+    this.rotating = false;
+
+    this.model = null;
     this.scene = null;
     this.camera = null;
     this.render = null;
@@ -14,12 +17,18 @@ class GLTF {
   }
 
   init = () => {
+
+    const control = document.getElementById('rotate');
+    control.addEventListener('click', () => {
+      this.rotating = !this.rotating;
+    })
+
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0xdddddd);
 
     this.camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 5000);
     this.camera.position.z = 10;
-    this.camera.position.y = 10;
+    this.camera.position.y = 5;
     this.camera.position.x = 10;
 
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -32,7 +41,8 @@ class GLTF {
     this.loader.load(
       this.link,
       (glb) => {
-        this.scene.add(glb.scene);
+        this.model = glb.scene;
+        this.scene.add(this.model);
         this.animate();
       }
     );
@@ -63,6 +73,9 @@ class GLTF {
   }
 
   animate = () => {
+    if(this.rotating) {
+      this.model.rotation.y += 0.01;
+    }
     this.renderer.render(this.scene, this.camera);
     this.controls.update();
     requestAnimationFrame(this.animate);

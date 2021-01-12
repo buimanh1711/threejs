@@ -40,7 +40,8 @@ class STL {
         mesh.position.y = 0;
         mesh.position.z = 0;
 
-        mesh.rotation.z = -50
+        mesh.rotation.x = 4.5
+
         this.animate();
       }
     );

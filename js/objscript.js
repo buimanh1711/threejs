@@ -2,6 +2,7 @@ class OBJ {
   constructor(link) {
     this.link = link;
 
+    this.model = null;
     this.scene = null;
     this.camera = null;
     this.render = null;
@@ -32,7 +33,8 @@ class OBJ {
     this.loader.load(
       this.link,
       (glb) => {
-        this.scene.add(glb);
+        this.model = glb;
+        this.scene.add(this.model);
         this.animate();
       }
     );
@@ -65,6 +67,7 @@ class OBJ {
   animate = () => {
     this.renderer.render(this.scene, this.camera);
     this.controls.update();
+
     requestAnimationFrame(this.animate);
   }
 
