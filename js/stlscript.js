@@ -2,6 +2,7 @@ class STL {
   constructor(link) {
     this.link = link;
 
+    this.model = null;
     this.scene = null;
     this.camera = null;
     this.render = null;
@@ -33,14 +34,14 @@ class STL {
       this.link,
       (stl) => {
         const material = new THREE.MeshPhongMaterial({ color: 0x61210B });
-        const mesh = new THREE.Mesh(stl, material);
-        this.scene.add(mesh);
-        console.log(mesh)
-        mesh.position.x = -700;
-        mesh.position.y = 0;
-        mesh.position.z = 0;
+        this.model = new THREE.Mesh(stl, material);
+        this.scene.add(this.model);
+        console.log(this.model)
+        this.model.position.x = -700;
+        this.model.position.y = 0;
+        this.model.position.z = 0;
 
-        mesh.rotation.x = 4.5
+        this.model.rotation.x = 4.5
 
         this.animate();
       }
@@ -74,6 +75,7 @@ class STL {
   animate = () => {
     this.renderer.render(this.scene, this.camera);
     this.controls.update();
+    // this.model.rotation.x += 0.1;
     requestAnimationFrame(this.animate);
   }
 
